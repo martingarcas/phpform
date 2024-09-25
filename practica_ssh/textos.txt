@@ -1,0 +1,25 @@
+https://docs.github.com/es/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+1-Esto crea una llave SSH utilizando el correo electrónico proporcionado como etiqueta.
+2-Cuando se te pida: "Introduce un archivo en el que se pueda guardar la clave", teclea Enter para aceptar la ubicación de archivo predeterminada. Ten en cuenta que si ya creaste claves SSH anteriormente, ssh-keygen puede pedirte que vuelvas a escribir otra clave. En este caso, se recomienda crear una clave SSH con nombre personalizado. Para ello, escribe la ubicación de archivo predeterminada y reemplaza id_ALGORITHM por el nombre de clave personalizado.
+3-Cuando se le pida, escriba una frase de contraseña segura. Para obtener más información, vea «Trabajar con contraseñas de clave SSH».
+
+1-Copia la llave SSH pública a tu portapapeles.
+
+Si tu archivo de llave SSH pública tiene un nombre diferente que en el código de ejemplo, modifica el nombre de archivo para que coincida con tu configuración actual. Al copiar tu clave, no agregues líneas nuevas o espacios en blanco.
+
+En la esquina superior derecha de cualquier página en GitHub, haga clic en la fotografía de perfil y luego en Configuración.
+
+En la sección "Acceso" de la barra lateral, haz clic en  Claves SSH y GPG.
+
+Haga clic en Nueva clave SSH o en Agregar clave SSH.
+
+En el campo "Title" (Título), agrega una etiqueta descriptiva para la clave nueva. Por ejemplo, si estás utilizando un portátil personal, puedes llamar a esta clave "Portátil personal".
+
+Selecciona el tipo de clave, ya sea de autenticación o de firma. Para más información sobre la firma de confirmación, consulta "Acerca de la verificación de firma de confirmación".
+
+En el campo "Clave", pega tu clave pública.
+
+Haga clic en Agregar clave SSH.
+
+AÑADIR TEXTOS A NUMEROS DE LAS CAPTURAS EN GIT BASH 

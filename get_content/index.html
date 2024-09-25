@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba request form</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <form method="POST" action="index.php" id="form" class="validate">
+
+        <div class="form-field">
+          <label for="full-name">Full Name</label>
+          <input type="text" name="full-name" id="full-name" placeholder="Joe Bloggs" required />
+        </div>
+
+        <div class="form-field">
+          <label for="email-input">Email</label>
+          <input type="text" name="email-input" id="email-input" placeholder="example@domain.com" required />
+        </div>
+
+        <div class="form-field">
+          <label for="password-input">Password</label>
+          <input type="text" name="password-input" id="password-input" required />
+        </div>
+
+        <div class="form-field">
+            <label>Tutor</label>
+            <input class="radio-input" type="radio" value="Sí" name="tutor-input"><label class="checkbox-label">Sí</label>
+            <input class="radio-input" type="radio" value="No" name="tutor-input"><label class="checkbox-label">No</label>
+        </div>
+
+        <label>Turno:</label>
+        <select name="select-turno">
+            <option value="Mañana">Mañana</option>
+            <option value="Tarde" selected>Tarde</option>
+            <option value="Noche">Noche</option>
+        </select>
+
+        <div class="form-field">
+            <label>Cursos que imparte</label>
+            <input class="checkbox-input" type="checkbox" value="DAW" name="cursos[]"><label class="checkbox-label">DAW</label>
+            <input class="checkbox-input" type="checkbox" value="DAM" name="cursos[]"><label class="checkbox-label">DAM</label>
+            <input class="checkbox-input" type="checkbox" value="ASIR" name="cursos[]"><label class="checkbox-label">ASIR</label>
+        </div>
+
+        <div class="form-field">
+          <label for=""></label>
+          <input type="submit" value="Sign Up" />
+        </div>
+        
+    </form>
+    
+</body>
+</html>
