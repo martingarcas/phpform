@@ -64,6 +64,7 @@
         //Mostramos datos recogidos y validados
         echo '
             <table>
+
                 <tr style="text-align: center;">
                     <th> CONFIGURACIÓN DE USUARIO</th>
                 </tr>
@@ -96,7 +97,6 @@
                     '</td>
                 </tr>;
                 
-                
             </table>
         ';
 
@@ -106,7 +106,7 @@
     }
 ?>
 <!-- 
-1- Sacar imagenes según hamburguesa" elegida y según los toppins elegidos
+1- Sacar imagenes según hamburguesa" elegida y según los toppins elegidos.
 2- crear fichero txt e investigar con php file  get  content file put content leer y meter entero read linea a linea
  en  formulario dar de alta usuarios, nombre, email y contraseña, edad, ciudad. recibir datos y si no existen en el fichero guardamos. 
  si existe lo modificamos.
