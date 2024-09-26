@@ -6,23 +6,50 @@
 
         $name       = isset($_POST['full-name']) ? $_POST['full-name'] : null;
         $city       = isset($_POST['city-input']) ? $_POST['city-input'] : null;
-        $age        = isset($_POST['age-input']) ? $_POST['age-input'] : null;
-        $persona    = [$name .";", $city . ";", $age . "\r"];
+        $id         = isset($_POST['id-input']) ? $_POST['id-input'] : null;
+        //$persona    = [$name .";", $city . ";", $id . "\r"];
 
         //var_dump($persona);
 
-        $file = fopen("contacts.csv","r");
-        print_r(fgetcsv($file));
-        fclose($file);
-
         $fichero = 'users.txt';
+        
+        //TEST MANOLO
+        $actual = file_get_contents($fichero);
+        $actual .= "\n$id;$name;$city";
+
+        file_put_contents($fichero, $actual);
+
+        $arr = explode("\n", $actual);
+
+        //var_dump($arr);
+
+        foreach ($arr as $user) {
+            
+            $asoc[explode(";", $user)[0]] = explode(";", $user)[1];
+    
+        }
+
+        if (array_key_exists(6, $arr)) {
+
+            echo "existe<br>";
+
+        } else {
+            
+            echo "no existe<br>";
+        }
+
+        var_dump($asoc);
+
+        /*foreach ($cursos as $curso) {
+            echo $curso . "<br>";
+        }*/
         // Escribir los contenidos en el fichero,
         // usando la bandera FILE_APPEND para añadir el contenido al final del fichero
         // y la bandera LOCK_EX para evitar que cualquiera escriba en el fichero al mismo tiempo
-        file_put_contents($fichero, $persona, FILE_APPEND | LOCK_EX);
+        /*file_put_contents($fichero, $persona, FILE_APPEND | LOCK_EX);
 
         $file = file_get_contents($fichero);
-        echo '<pre>' . $file . '</pre>';
+        echo '<pre>' . $file . '</pre>';*/
 
     }  
 
