@@ -15,13 +15,11 @@
         
         //TEST MANOLO
         $actual = file_get_contents($fichero);
-        $actual .= "\n$id;$name;$city";
+        //$actual .= "\n$id;$name;$city";
 
         //file_put_contents($fichero, $actual);
 
         $arr = explode("\n", $actual);
-
-        //var_dump($arr);
 
         foreach ($arr as $user) {
             
@@ -29,28 +27,18 @@
     
         }
 
-        foreach ($asoc as $a) {
+        if (!array_key_exists($id, $asoc)) {
 
-            echo $a[0];
-
-            if (array_key_exists($a, $arr)) {
-
-                file_put_contents($fichero, $actual);
-
-            } else {
-
-                echo 'no!!!!';
-            }          
-        }
-
-        /*if (array_key_exists(6, $arr)) {
-
-            echo "existe<br>";
+            //echo 'El usuario con id ' . $a . ' ya existe en nuestra base de datos.';
+            echo 'NO EXISTE'; 
+            $actual .= "\n$id;$name;$city";
+            file_put_contents($fichero, $actual);
 
         } else {
-            
-            echo "no existe<br>";
-        }*/
+
+            //no existe por lo tanto pinto
+            echo 'El usuario con id ' . $id . ' ya existe en nuestra base de datos.';
+        }    
 
         //var_dump($asoc);
 
@@ -64,7 +52,5 @@
 
         $file = file_get_contents($fichero);
         echo '<pre>' . $file . '</pre>';*/
-
     }  
-
 ?>
