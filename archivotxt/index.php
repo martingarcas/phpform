@@ -17,7 +17,7 @@
         $actual = file_get_contents($fichero);
         $actual .= "\n$id;$name;$city";
 
-        file_put_contents($fichero, $actual);
+        //file_put_contents($fichero, $actual);
 
         $arr = explode("\n", $actual);
 
@@ -25,20 +25,34 @@
 
         foreach ($arr as $user) {
             
-            $asoc[explode(";", $user)[0]] = explode(";", $user)[1];
+            $asoc[explode(";", $user)[0]] = explode(";", $user)[0]; //así  obtengo el id.
     
         }
 
-        if (array_key_exists(6, $arr)) {
+        foreach ($asoc as $a) {
+
+            echo $a[0];
+
+            if (array_key_exists($a, $arr)) {
+
+                file_put_contents($fichero, $actual);
+
+            } else {
+
+                echo 'no!!!!';
+            }          
+        }
+
+        /*if (array_key_exists(6, $arr)) {
 
             echo "existe<br>";
 
         } else {
             
             echo "no existe<br>";
-        }
+        }*/
 
-        var_dump($asoc);
+        //var_dump($asoc);
 
         /*foreach ($cursos as $curso) {
             echo $curso . "<br>";
