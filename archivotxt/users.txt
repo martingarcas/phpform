@@ -1,5 +1,6 @@
-
-2;Daniel García;Jaén
-1;Daniel García;Jaén
-3;Dniel;dfs
-23;martin;cordoba
+;;
+5;rafa;valencia
+10;juanmi;jaen
+14;antonio;cordoba
+30;miguel;formentera
+57;jacinto;jaen

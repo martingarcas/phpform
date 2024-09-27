@@ -1,5 +1,6 @@
 <?php
 
+    //VALIDAR DATOS
     $method = $_SERVER['REQUEST_METHOD'];
 
     if ($method == 'POST') {
@@ -9,38 +10,52 @@
         $id         = isset($_POST['id-input']) ? $_POST['id-input'] : null;
         //$persona    = [$name .";", $city . ";", $id . "\r"];
 
-        //var_dump($persona);
-
-        $fichero = 'users.txt';
-        
-        //TEST MANOLO
-        $actual = file_get_contents($fichero);
-        //$actual .= "\n$id;$name;$city";
-
-        //file_put_contents($fichero, $actual);
-
-        $arr = explode("\n", $actual);
+        $fichero    = 'users.txt';
+        $actual     = file_get_contents($fichero);
+        $arr        = explode("\n", $actual);
 
         foreach ($arr as $user) {
-            
-            $asoc[explode(";", $user)[0]] = explode(";", $user)[0]; //así  obtengo el id.
-    
+
+            $partes=explode(";", $user);
+            $asoc[$partes[0]] = $partes; //meto toda la cadena
         }
+
+        echo '-------------------------------------';
 
         if (!array_key_exists($id, $asoc)) {
 
             //echo 'El usuario con id ' . $a . ' ya existe en nuestra base de datos.';
-            echo 'NO EXISTE'; 
-            $actual .= "\n$id;$name;$city";
-            file_put_contents($fichero, $actual);
+            echo 'NO EXISTE';
+            echo '-------------------------------------';
+            $asoc[$id][0] = $id;
+            $asoc[$id][1] = $name;
+            $asoc[$id][2] = $city;
+
+            $actual = "";
+
+            foreach ($asoc as $linea) {
+                
+                $actual = $actual.$linea[0] . ";" . $linea[1] . ";" . $linea[2] . "\n";
+
+            }
 
         } else {
 
-            //no existe por lo tanto pinto
-            echo 'El usuario con id ' . $id . ' ya existe en nuestra base de datos.';
-        }    
+            $asoc[$id][1] = $name;
+            $asoc[$id][2] = $city;
 
-        //var_dump($asoc);
+            $actual = "";
+
+            foreach ($asoc as $linea) {
+                
+                $actual = $actual.$linea[0] . ";" . $linea[1] . ";" . $linea[2] . "\n";
+            }
+
+            //no existe por lo tanto pinto
+            //echo 'El usuario con id ' . $id . ' ya existe en nuestra base de datos.';
+        }
+
+        file_put_contents($fichero, $actual);
 
         /*foreach ($cursos as $curso) {
             echo $curso . "<br>";
