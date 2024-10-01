@@ -1,6 +1,5 @@
-;;
-5;rafa;valencia
-10;juanmi;jaen
-14;antonio;cordoba
-30;miguel;formentera
-57;jacinto;jaen
+1;martin;jaen
+2;daniel;jaen
+5;juanmi;las infantas
+10;esther;cadiz
+12;jusep;valencia

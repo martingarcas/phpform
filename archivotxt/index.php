@@ -12,21 +12,28 @@
 
         $fichero    = 'users.txt';
         $actual     = file_get_contents($fichero);
-        $arr        = explode("\n", $actual);
+
+        $arr  = explode("\n", $actual);
 
         foreach ($arr as $user) {
 
-            $partes=explode(";", $user);
-            $asoc[$partes[0]] = $partes; //meto toda la cadena
+            $partes             = explode(";", $user);            
+            $asoc[$partes[0]]   = $partes; //meto toda la cadena
         }
 
-        echo '-------------------------------------';
+        //echo '-------------------------------------';
 
         if (!array_key_exists($id, $asoc)) {
 
-            //echo 'El usuario con id ' . $a . ' ya existe en nuestra base de datos.';
-            echo 'NO EXISTE';
-            echo '-------------------------------------';
+            echo 'El usuario con id ' . $id . ' no existe en nuestra base de datos, procedemos a introducir.';
+            //echo 'NO EXISTE';
+            //echo '-------------------------------------';
+
+            /*if (strlen($asoc[0] == 0)) {
+                
+                array_shift($asoc);
+            }*/
+            
             $asoc[$id][0] = $id;
             $asoc[$id][1] = $name;
             $asoc[$id][2] = $city;
@@ -34,12 +41,16 @@
             $actual = "";
 
             foreach ($asoc as $linea) {
-                
-                $actual = $actual.$linea[0] . ";" . $linea[1] . ";" . $linea[2] . "\n";
 
+                if (!strlen($linea[0]) == 0) {
+
+                    $actual = $actual.$linea[0] . ";" . $linea[1] . ";" . $linea[2] . "\n";
+                }
             }
 
         } else {
+
+            echo 'El usuario con id ' . $id . ' ya existe en nuestra base de datos, procedemos a actualizar.';
 
             $asoc[$id][1] = $name;
             $asoc[$id][2] = $city;
@@ -47,12 +58,14 @@
             $actual = "";
 
             foreach ($asoc as $linea) {
-                
-                $actual = $actual.$linea[0] . ";" . $linea[1] . ";" . $linea[2] . "\n";
+
+                if (!strlen($linea[0]) == 0) {
+
+                    $actual = $actual.$linea[0] . ";" . $linea[1] . ";" . $linea[2] . "\n";
+                } 
             }
 
             //no existe por lo tanto pinto
-            //echo 'El usuario con id ' . $id . ' ya existe en nuestra base de datos.';
         }
 
         file_put_contents($fichero, $actual);
