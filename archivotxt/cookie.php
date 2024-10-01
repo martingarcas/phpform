@@ -1,18 +1,21 @@
 <?php
 $contador = 1;
+$fecha = date("d/m/Y | H:i:s");
 
 if (isset($_COOKIE['contador'])) {
     
-    $contador = $_COOKIE['contador'] + 1;
+    $contador   = $_COOKIE['contador'] + 1;
 
 } else {
 
     
 }
 
-echo "Visita número: $contador";
+echo "Visita número: $contador\n";
+echo "Su última visita fué el " . $_COOKIE['fecha'];
 
-setcookie("contador", $contador, time()+10);
-
-var_dump($_COOKIE);
+setcookie("contador", $contador, time()+3600*24*31); //3600*24*31
+setcookie("fecha", $fecha, time()+31536000);
+// unset($_COOKIE["contador"]);
+//var_dump($_COOKIE);
 //sacar cookie que diga cuando me conecté por última vez, sacar fecha y cuanas veces te has conectado.
