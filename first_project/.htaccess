@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^(.*)/(.*)/ holamundo.php?nombre=$1&apellido=$2 [L]
+RewriteRule ^(.*)/ holamundo.php?nombre=$1 [L]
