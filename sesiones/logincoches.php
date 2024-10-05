@@ -1,16 +1,16 @@
 <?php
 
+include 'util.php';
+
 $usuario    = $_POST['usuario'];
 $contraseña = $_POST['contrasena'];
-
-include 'login.php';
 
 if ($_POST['usuario'] == 'martin') {
 
     if ($_POST['contrasena'] == 'martin') {
 
         logIn($usuario);
-        header('Location: marcas.html');
+        header('Location: marcas.php');
 
     } else {
 

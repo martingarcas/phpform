@@ -1,6 +1,36 @@
 <?php
 
-    $marca = $_GET['marca'];
+    include 'util.php';
+
+    iniciaSesion();
+
+    if (isset($_GET['marca'])) {
+        
+        $marca              = $_GET['marca'];
+        $_SESSION['marca']  = $_GET['marca'];
+
+    } else if (isset($_SESSION['marca'])){
+
+        $marca = $_SESSION['marca'];
+
+    } else {
+        
+        header('Location: marcas.php');
+    }
+    
+    if (isset($_POST['modelo'])) {
+
+        $modelo = $_POST['modelo'];
+        
+        if (isset($_SESSION['carrito'])) {
+
+            $_SESSION['carrito'][] = $modelo;
+
+        } else {
+            
+            $_SESSION['carrito'] = [$modelo];
+        }
+    }
 
     $coches = [
 
@@ -27,16 +57,27 @@
             foreach ($coches[$marca] as $coche) {
                 
                 echo "
-                    <h3>$coche</h3>
-                    <input type='submit' value='Comprar'/>
-                    ";
+                    <h3 id='$coche'>$coche</h3>
+
+                    <form method='POST' action='coches.php'>
+                        <input type='hidden' name='modelo' value='$coche'/>
+                        <input type='submit' value='Añadir al carrito'/>
+                    </form>
+
+                ";
             }
             
             echo "</div>";
 
     } else {
 
-        echo "Coches fuera de disponibilidad.";
+        echo "Coches fuera de disponibilidad.<br>";
     }
+
+    buttonGoBack('marcas.php');
+    echo "<br>";
+    buttonLogOut();
+    echo "<br>";
+    buttonCarrito();
 
 ?>
