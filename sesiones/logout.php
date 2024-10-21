@@ -4,4 +4,6 @@
 
     logOut();
 
+    header('Location: index.html');
+
 ?>

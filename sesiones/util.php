@@ -8,7 +8,6 @@
     function cierraSesion() {
 
         session_destroy();
-        header('Location: index.html');
     }
 
     function logIn($user) {
